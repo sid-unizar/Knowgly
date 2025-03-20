@@ -7,9 +7,12 @@
 </div>
 
 # Project overview
-### Project Name: `Knowgly`
-### Project Purpose and Goals: Entity Indexing and Retrieval in Knowledge Graphs, via an information-based and fully unsupervised index schema construction
+### Project Name
+`Knowgly`
+### Project Purpose and Goals
+Entity Indexing and Retrieval in Knowledge Graphs, via an information-based and fully unsupervised index schema construction
 ### Paper Link: 
+Incoming :)
 
 # Table of Contents
 1. [Requirements](#requirements)
