@@ -1,0 +1,8 @@
+SELECT ?pred ?entropyEntityTypeImportance
+WHERE { 
+        ?factURI a <http://sid-unizar-search.com/importance/Predicate-Type>.
+        ?factURI <http://sid-unizar-search.com/importance/predicate> ?pred .
+        ?factURI <http://sid-unizar-search.com/importance/type> <%s> .
+
+        ?factURI <http://sid-unizar-search.com/importance/entropyEntityTypeImportance> ?entropyEntityTypeImportance .
+}

@@ -1,0 +1,5 @@
+Simply create a virtualenv and add pyterrier via pip, as indicated in https://github.com/terrier-org/pyterrier
+    - The searcher requires pandas
+
+The searcher.py and indexer.py act as multithreaded pyTerrier servers for each task, and should be running before executing
+the corresponding pipelines in Knowgly

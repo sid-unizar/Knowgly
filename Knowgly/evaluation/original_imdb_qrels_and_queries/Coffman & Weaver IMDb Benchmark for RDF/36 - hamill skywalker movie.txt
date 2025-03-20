@@ -1,0 +1,6 @@
+
+# hamill skywalker movie
+
+<http://www.imdb.quira/person/604830>,<http://www.imdb.quira/character/4526382>,<http://www.imdb.quira/work/2202074> # Star Wars
+<http://www.imdb.quira/person/604830>,<http://www.imdb.quira/character/4526385>,<http://www.imdb.quira/work/2202129> # Star Wars: Episode V - The Empire Strikes Back
+<http://www.imdb.quira/person/604830>,<http://www.imdb.quira/character/4526386>,<http://www.imdb.quira/work/2202130> # Star Wars: Episode VI - Return of the Jedi

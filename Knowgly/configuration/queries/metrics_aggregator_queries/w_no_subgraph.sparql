@@ -1,0 +1,5 @@
+SELECT ?w
+WHERE {
+    %s <http://purl.org/voc/vrank#w> ?w .
+}
+

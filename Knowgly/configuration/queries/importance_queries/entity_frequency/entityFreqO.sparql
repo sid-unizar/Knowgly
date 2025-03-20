@@ -1,0 +1,26 @@
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?uri a <http://sid-unizar-search.com/importance/Object>. 
+		?uri <http://sid-unizar-search.com/importance/entityFrequencyO> ?count . 
+	}
+}
+WHERE {
+	SELECT ?uri (count(distinct ?s) as ?count)
+    WHERE {
+		?s a ?class. 
+    	?s ?p ?temp.
+		
+		BIND (if (isIRI(?temp), ?temp, IRI(
+						CONCAT("http://sid-unizar-search.com/importance/litObject/",str(MD5(str(?temp))) )
+						) ) as ?uri)
+		
+  	}
+    GROUP by ?uri 
+}
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Object>. 
+#		?factURI <http://sid-unizar-search.com/importance/entityFrequencyO> ?c . 
+#	}
+#}

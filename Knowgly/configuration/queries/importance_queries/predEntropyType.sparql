@@ -1,0 +1,36 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX math: <http://www.w3.org/2005/xpath-functions/math#>
+
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?predTypeURI a <http://sid-unizar-search.com/importance/Predicate-Type> .
+		?predTypeURI <http://sid-unizar-search.com/importance/predicateEntropyType> ?entropy
+	}
+}
+WHERE {
+	
+	SELECT 	(IRI(CONCAT(str(?predURI), "-", str(?typeURI))) as ?predTypeURI)
+			( (-sum(?prob * ?singleEnt)) as ?entropy )
+	{
+		GRAPH <http://sid-unizar-search.com/importance/facts> {
+			?factTypeURI a <http://sid-unizar-search.com/importance/Fact-Type>. 
+			?factTypeURI <http://sid-unizar-search.com/importance/fact> ?factURI . 
+			?factTypeURI <http://sid-unizar-search.com/importance/type> ?typeURI . 
+			
+			?factURI <http://sid-unizar-search.com/importance/predicate> ?predURI. 		
+			
+			?factTypeURI <http://sid-unizar-search.com/importance/factProbabilityType> ?prob
+		}
+		
+		
+		BIND (IF(?prob = 0, 0, math:log(?prob) / math:log(2)) as ?singleEnt)
+	}
+	GROUP BY ?typeURI ?predURI
+}
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Predicate-Type>. 
+#		?factURI <http://sid-unizar-search.com/importance/predicateEntropyType> ?c . 
+#	}
+#}

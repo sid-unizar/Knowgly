@@ -1,0 +1,22 @@
+For indexing: Download galago-3.16-bin from sourceforge (https://sourceforge.net/projects/lemur/files/lemur/galago-3.16/galago-3.16-bin.tar.gz/download) and unzip the folder as-is here
+
+For searching: Download galago-3.16 (source) from sourceforge (https://sourceforge.net/projects/lemur/files/lemur/galago-3.16/galago-3.16.tar.gz/download) and unzip the folder as-is here
+    - Compile it with any modern java version (during our tests, openJDK >19)
+        - If compilation fails, as in our case, it may be needed to manually add exception clauses which were previously missing
+    - Add contrib's .jar file to the main executable, in order to be able to execute BM25F queries
+        - mv contrib/target/contrib-3.16.jar core/target/appassembler/lib/
+        - Add :"$REPO"/contrib-3.16.jar in the 'core/target/appassembler/bin/galago' script's classpath
+
+
+Notes:
+    - Indexing with galago is a 2-step process. The java executable will create trectexts for every entity during its own "indexing" phase. Afterwards,
+      the actual galago index can be created with build_galago_index.sh in the main Knowgly's folder
+
+    - Searching is also a 2-step process, although it has been integrated in the java executable, which will automatically call the run_queries_galago.sh script
+
+
+Using up-to-date versions:
+  We have also been able to successfully use newer versions of galago, namely 3.22. In order to use this version:
+    - Compile the project via mvn package -dskipTests
+    - Use contrib's galago executable as indicated in BUILD (in order to enable BM25F queries)
+    - The run_queries_galago.sh script should be modified accordingly to point to 3.22's installation path

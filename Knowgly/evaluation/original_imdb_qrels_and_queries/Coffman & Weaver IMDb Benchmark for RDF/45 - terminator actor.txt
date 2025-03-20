@@ -1,0 +1,6 @@
+
+# terminator actor
+
+<http://www.imdb.quira/work/2307181>,<http://www.imdb.quira/person/1349455> # Arnold Schwarzenegger in “The Terminator"
+<http://www.imdb.quira/work/2229677>,<http://www.imdb.quira/person/1349455> # Arnold Schwarzenegger in "Terminator 2: Judgment Day"
+<http://www.imdb.quira/work/2229681>,<http://www.imdb.quira/person/1349455> # Arnold Schwarzenegger in "Terminator 3: Rise of the Machines"

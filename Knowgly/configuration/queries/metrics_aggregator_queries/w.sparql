@@ -1,0 +1,7 @@
+SELECT ?w
+WHERE {
+    GRAPH <http://sid-unizar-search.com/infoRank> {
+        %s <http://purl.org/voc/vrank#w> ?w .
+    }
+}
+

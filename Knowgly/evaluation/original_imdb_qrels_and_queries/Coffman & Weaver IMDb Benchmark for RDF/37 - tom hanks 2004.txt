@@ -1,0 +1,12 @@
+
+# tom hanks 2004
+
+<http://www.imdb.quira/person/608912>,<http://www.imdb.quira/work/1771243> # Mailbox Elvis in "Elvis Has Left the Building"
+<http://www.imdb.quira/person/608912>,<http://www.imdb.quira/work/2272917> # Professor G.H. Dorr in "The Ladykillers"
+<http://www.imdb.quira/person/608912>,<http://www.imdb.quira/work/2307177> # Victor Navorski in "The Terminal"
+<http://www.imdb.quira/person/608912>,<http://www.imdb.quira/work/2291542> # Hero Boy in "The Polar Express"
+<http://www.imdb.quira/person/608912>,<http://www.imdb.quira/work/2291542> # Father in "The Polar Express"
+<http://www.imdb.quira/person/608912>,<http://www.imdb.quira/work/2291542> # Conductor in "The Polar Express"
+<http://www.imdb.quira/person/608912>,<http://www.imdb.quira/work/2291542> # Hobo in "The Polar Express"
+<http://www.imdb.quira/person/608912>,<http://www.imdb.quira/work/2291542> # Scrooge in "The Polar Express"
+<http://www.imdb.quira/person/608912>,<http://www.imdb.quira/work/2291542> # Santa Clause in "The Polar Express"

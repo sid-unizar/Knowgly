@@ -1,0 +1,16 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+INSERT { 
+	GRAPH <http://sid-unizar-search.com/infoRank> { 
+		?c <http://purl.org/voc/vrank#absC> ?abs . 
+	}
+}
+WHERE {
+	SELECT ?c (max(?iw) as ?abs) 
+	WHERE { 
+		?r rdf:type ?c .
+		GRAPH <http://sid-unizar-search.com/infoRank> {
+			?r <http://purl.org/voc/vrank#iw> ?iw . 
+		}
+	}
+	group by ?c
+}

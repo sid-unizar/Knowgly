@@ -1,0 +1,28 @@
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?entTypeFreqURI a <http://sid-unizar-search.com/importance/Predicate-Type> .
+		?entTypeFreqURI <http://sid-unizar-search.com/importance/predicate> ?uri .
+		?entTypeFreqURI <http://sid-unizar-search.com/importance/type> ?class . 
+		?entTypeFreqURI <http://sid-unizar-search.com/importance/entityFrequencyType> ?count  
+	}
+}
+WHERE {
+	# Cambiado de generar un predicateType con el MD5 de la concatenación a usarlos tal cual, porque en el resto no se hacía
+	#SELECT ?uri ?class (count(distinct ?s) as ?count) (IRI(CONCAT("http://sid-unizar-search.com/importance/Predicate-Type/", 
+	#											str(MD5(CONCAT(str(?uri), "-", str(?class))))) ) as ?entTypeFreqURI)
+	SELECT ?uri ?class (count(distinct ?s) as ?count) (IRI(str(CONCAT(str(?uri), "-", str(?class)))) as ?entTypeFreqURI)
+
+    WHERE {
+		?s a ?class .
+    	?s ?uri ?o .
+		
+  	}
+    GROUP by ?uri ?class
+}
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Predicate-Type>. 
+#		?factURI <http://sid-unizar-search.com/importance/entityFrequencyType> ?c . 
+#	}
+#}

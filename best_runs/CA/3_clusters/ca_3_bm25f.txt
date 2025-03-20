@@ -1,0 +1,5 @@
+Results of BM25 parameter tuning:
+	Weight scheme used: [0.7999999999999998, 0.4638801054585616, 0.3015888996000915]
+	k1: 0.9
+	b: 0.4
+	Score: 0.46

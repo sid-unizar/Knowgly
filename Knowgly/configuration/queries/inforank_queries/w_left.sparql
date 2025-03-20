@@ -1,0 +1,73 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+  GRAPH <http://sid-unizar-search.com/infoRank> {
+ 	?RP a <http://sid-unizar-search.com/SubjectPred> .
+	?RP <http://purl.org/voc/vrank#w> ?WBounded
+  }
+}
+WHERE {
+	SELECT DISTINCT ?RP ?WBounded
+	WHERE {
+		# For every entity r and predicate p associated to it (on the left side)
+		?r ?p ?another_subject .
+
+		# We explictly ignore whether the object is truly acting as a subject or not for
+		# performance reasons, so we may calculate W(r, p) wrongfully when the object 
+		# is an URI which doesn't do anything in this KG
+		# These last ocurrences are filtered in the code itself, when querying HDT
+		FILTER (!isLiteral(?another_subject))
+
+		# Get IR(p)
+		GRAPH <http://sid-unizar-search.com/infoRank> {
+			# We don't care whether it's an object or a datatype property
+    		?p <http://purl.org/voc/vrank#ir> ?ir .
+		}
+
+  		# Sum of IR(q), where r acts as a subject
+		OPTIONAL {
+			SELECT ?q1 (sum(?irSubject) as ?sumSubject)
+            WHERE {
+              ?r ?q1 ?o .
+
+              GRAPH <http://sid-unizar-search.com/infoRank> {
+                # Get IR(q)
+                ?q1 <http://purl.org/voc/vrank#ir> ?irSubject
+              }
+            } GROUP BY ?r
+		}
+
+		# Sum of IR(q), where r acts as an object, excluding those q's which appeared
+		# when r acted as a subject
+		OPTIONAL {
+			SELECT (sum(?irObject) as ?sumObject)
+			WHERE {
+              ?s ?q2 ?r .
+
+              GRAPH <http://sid-unizar-search.com/infoRank> {
+                # Get IR(q)
+                ?q2 <http://purl.org/voc/vrank#ir> ?irObject
+              }
+
+			  FILTER (?q1 != ?q2)
+
+            } GROUP BY ?r
+		}
+
+  		BIND(IF(bound(?sumSubject), ?sumSubject, xsd:integer("0")) AS ?sumSubjectBounded)
+  		BIND(IF(bound(?sumObject), ?sumObject, xsd:integer("0")) AS ?sumObjectBounded)
+
+
+		BIND((xsd:float(?ir) / xsd:float(?sumSubjectBounded + ?sumObjectBounded)) AS ?W)
+
+
+		BIND(IF((?sumSubjectBounded + ?sumObjectBounded) != 0, ?W, xsd:integer("0")) AS ?WBounded)
+
+
+		BIND(IRI(CONCAT(str(?r), str(?p))) AS ?RP)
+
+		# We can avoid storing cases where W(r,p) is 0
+		FILTER (?WBounded != 0)
+	}
+}

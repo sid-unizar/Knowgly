@@ -1,0 +1,23 @@
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?factURI a <http://sid-unizar-search.com/importance/Fact>. 
+		?factURI <http://sid-unizar-search.com/importance/predicate> ?p . 
+		?factURI <http://sid-unizar-search.com/importance/object> ?o . 
+		?factURI <http://sid-unizar-search.com/importance/factFrequency> ?c . 
+	}
+}
+WHERE {
+	SELECT ?factURI ?p ?o (count(?p) as ?c)
+    WHERE {
+    	?s ?p ?o .
+		BIND (IRI(CONCAT(str(?p), "-", str(?o))) as ?factURI)
+  	}
+    GROUP by ?p ?o ?factURI 
+}
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Fact>. 
+#		?factURI <http://sid-unizar-search.com/importance/factFrequency> ?c . 
+#	}
+#}

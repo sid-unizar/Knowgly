@@ -1,0 +1,10 @@
+
+# sean connery fleming
+
+<http://www.imdb.quira/person/295852>,<http://www.imdb.quira/person/477405>,<http://www.imdb.quira/work/1826925> # Goldfinger
+<http://www.imdb.quira/person/295852>,<http://www.imdb.quira/person/477405>,<http://www.imdb.quira/work/1750329> # Dr. No
+<http://www.imdb.quira/person/295852>,<http://www.imdb.quira/person/477405>,<http://www.imdb.quira/work/1732884> # Diamonds Are Forever
+<http://www.imdb.quira/person/295852>,<http://www.imdb.quira/person/477405>,<http://www.imdb.quira/work/1809011> # From Russia with Love
+<http://www.imdb.quira/person/295852>,<http://www.imdb.quira/person/477405>,<http://www.imdb.quira/work/2047471> # Never Say Never Again
+<http://www.imdb.quira/person/295852>,<http://www.imdb.quira/person/477405>,<http://www.imdb.quira/work/2399264> # You Only Live Twice
+<http://www.imdb.quira/person/295852>,<http://www.imdb.quira/person/477405>,<http://www.imdb.quira/work/2322302> # Thunderball

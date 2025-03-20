@@ -1,0 +1,5 @@
+
+# will kane movie
+
+<http://www.imdb.quira/character/10239754>,<http://www.imdb.quira/work/1852100> # High Noon
+<http://www.imdb.quira/character/6782928>,<http://www.imdb.quira/work/1852105> # High Noon, Part II: The Return of Will Kane

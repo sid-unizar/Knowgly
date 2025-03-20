@@ -1,0 +1,5 @@
+
+# dean jones herbie
+
+<http://www.imdb.quira/person/733100>,<http://www.imdb.quira/work/2277973> # The Love Bug
+<http://www.imdb.quira/person/733100>,<http://www.imdb.quira/work/1849251> # Herbie Goes to Monte Carlo

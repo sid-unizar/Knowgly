@@ -1,0 +1,19 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+INSERT {
+  GRAPH <http://sid-unizar-search.com/infoRank> {
+ 	?r <http://purl.org/voc/vrank#iw> ?iw 
+  }
+}
+WHERE 
+{ 
+	?r rdf:type ?c . 
+	OPTIONAL { 
+		select ?r (count(?o) as ?inf) 
+		where { 
+			?r ?p ?o .
+			filter ( isLiteral(?o) ) } 
+			group by ?r 
+		} 
+	BIND(if(bound(?inf), ?inf, xsd:integer("0")) AS ?iw) 
+} 

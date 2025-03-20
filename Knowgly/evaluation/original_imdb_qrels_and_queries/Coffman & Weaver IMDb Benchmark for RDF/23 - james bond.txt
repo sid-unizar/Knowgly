@@ -1,0 +1,26 @@
+
+# james bond movie
+
+<http://www.imdb.quira/character/2204186>,<http://www.imdb.quira/work/1750329> # Dr. No
+<http://www.imdb.quira/character/2204198>,<http://www.imdb.quira/work/1809011> # From Russia with Love
+<http://www.imdb.quira/character/2204201>,<http://www.imdb.quira/work/1826925> # Goldfinger
+<http://www.imdb.quira/character/2204340>,<http://www.imdb.quira/work/2322302> # Thunderball
+<http://www.imdb.quira/character/2204357>,<http://www.imdb.quira/work/2399264> # You Only Live Twice
+<http://www.imdb.quira/character/6248276>,<http://www.imdb.quira/work/2069277> # On Her Majesty's Secret Service
+<http://www.imdb.quira/character/2204183>,<http://www.imdb.quira/work/1732884> # Diamonds Are Forever
+<http://www.imdb.quira/character/7607520>,<http://www.imdb.quira/work/1977285> # Live and Let Die
+<http://www.imdb.quira/character/7607603>,<http://www.imdb.quira/work/2280889> # The Man with the Golden Gun
+<http://www.imdb.quira/character/7607632>,<http://www.imdb.quira/work/2303857> # The Spy Who Loved Me
+<http://www.imdb.quira/character/7607525>,<http://www.imdb.quira/work/2025863> # Moonraker
+<http://www.imdb.quira/character/7607466>,<http://www.imdb.quira/work/1802549> # For Your Eyes Only
+<http://www.imdb.quira/character/2204250>,<http://www.imdb.quira/work/2047471> # Never Say Never Again
+<http://www.imdb.quira/character/7607535>,<http://www.imdb.quira/work/2064624> # Octopussy
+<http://www.imdb.quira/character/7607413>,<http://www.imdb.quira/work/1571902> # A View to a Kill
+<http://www.imdb.quira/character/2524405>,<http://www.imdb.quira/work/2276771> # The Living Daylights
+<http://www.imdb.quira/character/2524377>,<http://www.imdb.quira/work/1971883> # Licence to Kill
+<http://www.imdb.quira/character/1370883>,<http://www.imdb.quira/work/1826899> # GoldenEye
+<http://www.imdb.quira/character/1371020>,<http://www.imdb.quira/work/2329350> # Tomorrow Never Dies
+<http://www.imdb.quira/character/1371016>,<http://www.imdb.quira/work/2316091> # The World Is Not Enough
+<http://www.imdb.quira/character/1370869>,<http://www.imdb.quira/work/1733808> # Die Another Day
+<http://www.imdb.quira/character/2354517>,<http://www.imdb.quira/work/1670966> # Casino Royale
+<http://www.imdb.quira/character/2354560>,<http://www.imdb.quira/work/2121050> # Quantum of Solace

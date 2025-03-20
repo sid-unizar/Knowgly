@@ -1,0 +1,12 @@
+
+# jacques clouseau actor
+
+<http://www.imdb.quira/character/6962192>,<http://www.imdb.quira/person/1359127> # Peter Sellers in "The Pink Panther"
+<http://www.imdb.quira/character/9985060>,<http://www.imdb.quira/person/1359127> # Peter Sellers in "A Shot in the Dark"
+<http://www.imdb.quira/character/374803>,<http://www.imdb.quira/person/55411> # Alan Arkin in "Inspector Clouseau"
+<http://www.imdb.quira/character/9985193>,<http://www.imdb.quira/person/1359127> # Peter Sellers in "The Return of the Pink Panther"
+<http://www.imdb.quira/character/9985129>,<http://www.imdb.quira/person/1359127> # Peter Sellers in "Revenge of the Pink Panther"
+<http://www.imdb.quira/character/9985209>,<http://www.imdb.quira/person/1359127> # Peter Sellers in "Trail of the Pink Panther"
+<http://www.imdb.quira/character/3399943>,<http://www.imdb.quira/person/455112> # Daniel Farrell in "Trail of the Pink Panther"
+<http://www.imdb.quira/character/7607448>,<http://www.imdb.quira/person/1035778> # Roger Moore in "Curse of the Pink Panther"
+<http://www.imdb.quira/character/6962192>,<http://www.imdb.quira/person/950070> # Steve Martin in "The Pink Panther"

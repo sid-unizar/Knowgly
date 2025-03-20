@@ -1,0 +1,18 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+INSERT {
+  GRAPH <http://sid-unizar-search.com/infoRank> {
+ 	?s <http://purl.org/voc/vrank#inforank> ?inforank 
+  }
+}
+WHERE 
+{ 
+	?s ?p ?o . 
+	
+	GRAPH <http://sid-unizar-search.com/infoRank> {
+		?s <http://purl.org/voc/vrank#pagerank> ?pagerank. 
+		?s <http://purl.org/voc/vrank#iw> ?iw. 
+	}
+
+	BIND(?iw * ?pagerank AS ?inforank) 
+} 

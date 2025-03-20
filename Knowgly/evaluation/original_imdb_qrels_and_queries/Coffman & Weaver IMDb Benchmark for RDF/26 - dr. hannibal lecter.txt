@@ -1,0 +1,5 @@
+
+# dr. hannibal lecter movie
+
+<http://www.imdb.quira/character/4988686>,<http://www.imdb.quira/work/2301356> # The Silence of the Lambs
+<http://www.imdb.quira/character/4988615>,<http://www.imdb.quira/work/2129854> # Red Dragon

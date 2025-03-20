@@ -1,0 +1,21 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+INSERT {
+	GRAPH <http://sid-unizar-search.com/infoRank> {
+		?d <http://purl.org/voc/vrank#absD> ?absD 
+	}
+}
+WHERE 
+{ 
+	SELECT ?d (count(distinct ?o) as ?absD) 
+	WHERE {
+		# We do not enforce that they have types, to avoid cases where we don't have a 
+		# reference to ?p in the infoRank graph
+		#?r rdf:type ?c . 
+
+		?r ?d ?o .
+
+		FILTER (isLiteral (?o))
+	}
+	GROUP BY ?d
+} 

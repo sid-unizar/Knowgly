@@ -1,0 +1,27 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+INSERT {
+	GRAPH <http://sid-unizar-search.com/infoRank> {	
+		?p <http://purl.org/voc/vrank#absP> ?absP
+	}
+}
+WHERE 
+{ 
+	SELECT ?p (max(?iw_r + ?iw_s) as ?absP) {
+		# We do not enforce that they have types, to avoid cases where we don't have a 
+		# reference to ?p in the infoRank graph
+		#?r rdf:type ?c . 
+		#?s rdf:type ?d .
+
+		?r ?p ?s . 
+
+		# No need to do this, since the iw queries will NEVER introduce a literal
+		#FILTER (!isLiteral (?s))
+
+		GRAPH <http://sid-unizar-search.com/infoRank> {
+			?r <http://purl.org/voc/vrank#iw> ?iw_r. 
+			?s <http://purl.org/voc/vrank#iw> ?iw_s. 
+		}
+	} 
+	group by ?p
+} 

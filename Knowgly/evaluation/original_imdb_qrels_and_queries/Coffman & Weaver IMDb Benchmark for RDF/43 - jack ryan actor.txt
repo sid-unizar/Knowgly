@@ -1,0 +1,7 @@
+
+# jack ryan actor
+
+<http://www.imdb.quira/character/72772>,<http://www.imdb.quira/person/11407> # Ben Affleck in "The Sum of All Fears"
+<http://www.imdb.quira/character/583573>,<http://www.imdb.quira/person/82832> # Alec Baldwin in "The Hunt for Red October"
+<http://www.imdb.quira/character/3629931>,<http://www.imdb.quira/person/484306> # Harrison Ford in "Clear and Present Danger"
+<http://www.imdb.quira/character/3630007>,<http://www.imdb.quira/person/484306> # Harrison Ford in "Patriot Games"

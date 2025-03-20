@@ -1,0 +1,23 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT { 
+	GRAPH <http://sid-unizar-search.com/infoRank> {
+		?p <http://purl.org/voc/vrank#ir> ?rel . 
+	}
+}
+WHERE {
+	SELECT ?p ?rel 
+	WHERE { 
+		GRAPH <http://sid-unizar-search.com/infoRank> {
+			?p <http://purl.org/voc/vrank#absP> ?abs .
+			{ 
+				SELECT (max(?absP) as ?maxValue) 
+				WHERE { 
+					?z <http://purl.org/voc/vrank#absP> ?absP . 
+				}
+			}
+			BIND( (xsd:float(?abs) / xsd:float(?maxValue)) AS ?rel)
+		}
+	}
+}

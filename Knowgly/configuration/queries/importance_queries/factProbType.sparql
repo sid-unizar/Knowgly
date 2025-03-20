@@ -1,0 +1,36 @@
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?factTypeURI a <http://sid-unizar-search.com/importance/Fact-Type>. 
+		?factTypeURI <http://sid-unizar-search.com/importance/fact> ?factURI . 
+		?factTypeURI <http://sid-unizar-search.com/importance/type> ?typeURI . 
+		?factTypeURI <http://sid-unizar-search.com/importance/factProbabilityType> ?prob . 
+	}
+}
+WHERE {
+	SELECT ?factTypeURI ?factURI ?typeURI ?prob WHERE {
+		GRAPH <http://sid-unizar-search.com/importance/facts> {       
+			?factTypeURI a <http://sid-unizar-search.com/importance/Fact-Type> .
+			?factTypeURI <http://sid-unizar-search.com/importance/fact> ?factURI .
+			?factTypeURI <http://sid-unizar-search.com/importance/type> ?typeURI .
+			
+			?factURI <http://sid-unizar-search.com/importance/predicate> ?predicate .
+			BIND (IRI(CONCAT(str(?predicate), "-", str(?typeURI))) as ?predTypeURI)
+		
+			
+			?factTypeURI <http://sid-unizar-search.com/importance/factFrequencyType> ?FFT .
+			?predTypeURI <http://sid-unizar-search.com/importance/factFrequencyTypeP> ?FFTP .
+		}
+		
+		BIND (IF (?FFTP = 0, xsd:double(0), xsd:double(?FFT) / xsd:double(?FFTP)) as ?prob)
+	}
+}
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Fact-Type>. 
+#		?factURI <http://sid-unizar-search.com/importance/factProbabilityType> ?c . 
+#	}
+#}

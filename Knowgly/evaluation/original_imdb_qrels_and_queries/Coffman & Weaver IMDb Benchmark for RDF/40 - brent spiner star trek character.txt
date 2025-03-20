@@ -1,0 +1,8 @@
+
+# brent spiner star trek character
+
+<http://www.imdb.quira/person/1424150>,<http://www.imdb.quira/work/2202005>,<http://www.imdb.quira/character/10417418> # Lt. Commander Data in "Star Trek: First Contact"
+<http://www.imdb.quira/person/1424150>,<http://www.imdb.quira/work/2202009>,<http://www.imdb.quira/character/10417420> # Lt. Commander Data in "Star Trek: Generations"
+<http://www.imdb.quira/person/1424150>,<http://www.imdb.quira/work/2202011>,<http://www.imdb.quira/character/10417422> # Lt. Commander Data in "Star Trek: Insurrection"
+<http://www.imdb.quira/person/1424150>,<http://www.imdb.quira/work/2202017>,<http://www.imdb.quira/character/10417423> # Lt. Commander Data in "Star Trek: Nemesis"
+<http://www.imdb.quira/person/1424150>,<http://www.imdb.quira/work/2202017>,<http://www.imdb.quira/character/10417424> # B-4 in "Star Trek: Nemesis"

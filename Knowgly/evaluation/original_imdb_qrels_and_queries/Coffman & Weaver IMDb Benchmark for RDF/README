@@ -1,0 +1,17 @@
+
+This benchmark is a RDF adaptation of the relational benchmark presented in:
+
+Joel Coffman and Alfred C. Weaver. "A Framework for Evaluating Database Keyword Search Strategies." CIKM '10: Proceedings of the 19th ACM Conference on Information and Knowledge Management." Toronto, Canada, October 2010.
+
+
+Each numbered file in this directory contains the relevance assessments for the topic corresponding to the file name. Each file has the following structure:
+
+# <query>
+
+<relevant result>
+<relevant result>
+
+...
+
+- Hash marks ('#') denote comments and should be ignored.  
+- Results are identified by their URI in the dataset.

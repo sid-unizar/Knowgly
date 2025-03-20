@@ -1,0 +1,6 @@
+
+# lord of the rings
+
+<http://www.imdb.quira/work/2277500> # The Lord of the Rings: The Return of the King
+<http://www.imdb.quira/work/2277503> # The Lord of the Rings: The Two Towers
+<http://www.imdb.quira/work/2277497> # The Lord of the Rings: The Fellowship of the Ring

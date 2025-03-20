@@ -1,0 +1,24 @@
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?entTypeFreqURI a <http://sid-unizar-search.com/importance/Predicate-Type> .
+		?entTypeFreqURI <http://sid-unizar-search.com/importance/predicate> ?uri .
+		?entTypeFreqURI <http://sid-unizar-search.com/importance/type> ?class . 
+		?entTypeFreqURI <http://sid-unizar-search.com/importance/factFrequencyTypeP> ?count  
+	}
+}
+WHERE {
+	SELECT ?uri ?class (count( ?s) as ?count) (IRI(CONCAT(str(?uri), "-", str(?class))) as ?entTypeFreqURI)
+    WHERE {
+		?s a ?class .
+    	?s ?uri ?o .
+		
+  	}
+    GROUP by ?uri ?class
+}
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Predicate-Type>. 
+#		?factURI <http://sid-unizar-search.com/importance/factFrequencyTypeP> ?c . 
+#	}
+#}

@@ -1,0 +1,25 @@
+
+# indiana jones last crusade lost ark
+
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/1423639> # Steven Spielberg
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/484306>  # Harrison Ford
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/901062>  # George Lucas
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/430721>  # Denholm Elliott
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/1253434> # John Rhys-Davies
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/1622075> # John Williams
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/828807>  # Ronald Lacey
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/1266471> # Pat Roach
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/946356>  # Frank Marshall
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/2101472> # Kathleen Kennedy
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/746911>  # Michael Kahn
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/761247>  # Philip Kaufman
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/1400489> # Douglas Slocombe
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/540392>  # Nick Gillard
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/1596257> # Robert Watts
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/580620>  # Ted Grossman
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/64788>   # Simon Atherton
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/1735329> # Jane Bay
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/3225361> # Deborah Fine
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/323528>  # Michael Culling
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/359596>  # Jack Dearlove
+<http://www.imdb.quira/work/1885153>,<http://www.imdb.quira/work/2124494>,<http://www.imdb.quira/person/3270511> # Barbara Harley

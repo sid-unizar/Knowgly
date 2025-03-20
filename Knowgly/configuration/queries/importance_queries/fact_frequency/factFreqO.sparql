@@ -1,0 +1,24 @@
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?uri a <http://sid-unizar-search.com/importance/Object>. 
+		?uri <http://sid-unizar-search.com/importance/factFrequencyO> ?count . 
+	}
+}
+WHERE {
+	SELECT ?uri (count(?uri) as ?count)
+    WHERE {
+    	?s ?p ?temp.
+		
+		BIND (if (isIRI(?temp), ?temp, IRI(
+						CONCAT("http://sid-unizar-search.com/importance/litObject/",str(MD5(str(?temp))) )
+						) ) as ?uri)
+  	}
+    GROUP by ?uri 
+}
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Object>. 
+#		?factURI <http://sid-unizar-search.com/importance/factFrequencyO> ?c . 
+#	}
+#} ORDER BY DESC(?c) LIMIT 10

@@ -1,0 +1,17 @@
+SELECT ?pred ?type ?gmeans
+WHERE { 
+	%s a ?type .
+
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+        ?factURI a <http://sid-unizar-search.com/importance/Predicate-Type>.
+        ?factURI <http://sid-unizar-search.com/importance/predicate> ?pred .
+        ?factURI <http://sid-unizar-search.com/importance/type> ?type .
+
+        ?factURI <http://sid-unizar-search.com/importance/typeImportance> ?typeImportance .
+		?factURI <http://sid-unizar-search.com/importance/entropyEntityTypeImportance> ?entropyEntityTypeImportance. 
+	}
+
+
+
+	BIND((?typeImportance + ?entropyEntityTypeImportance) AS ?gmeans)
+}

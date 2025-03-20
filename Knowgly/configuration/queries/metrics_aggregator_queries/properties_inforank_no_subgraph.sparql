@@ -1,0 +1,3 @@
+SELECT ?p ?ir {
+	?p <http://purl.org/voc/vrank#ir> ?ir .
+}

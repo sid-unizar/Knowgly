@@ -1,0 +1,13 @@
+PREFIX vcard: <http://www.w3.org/2001/vcard-rdf/3.0#>
+PREFIX dbpedia_res: <http://dbpedia.org/resource/>
+PREFIX dbpedia_ont: <http://dbpedia.org/ontology/>
+PREFIX dbpedia_prop: <http://dbpedia.org/property/>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+                
+SELECT ?p ?label
+WHERE { 
+    %s ?p ?o .
+    ?p rdfs:label ?label .
+
+    FILTER (lang(?label) = 'en')
+} 

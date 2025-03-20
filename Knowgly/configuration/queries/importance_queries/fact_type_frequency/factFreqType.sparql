@@ -1,0 +1,35 @@
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?factTypeURI a <http://sid-unizar-search.com/importance/Fact-Type>. 
+		?factTypeURI <http://sid-unizar-search.com/importance/fact> ?factURI . 
+		?factTypeURI <http://sid-unizar-search.com/importance/type> ?type . 
+		?factTypeURI <http://sid-unizar-search.com/importance/factFrequencyType> ?c . 
+	}
+}
+WHERE {
+
+	SELECT ?type ?p ?o ?factTypeURI ?factURI ?c {
+		{
+			SELECT ?type ?p ?o (count(?o) as ?c)
+			WHERE {
+				?s a ?type .
+				?s ?p ?o .
+			}
+			GROUP by ?type ?p ?o  
+		}
+		#BIND (str(MD5(CONCAT(str(?p), "-", str(?o)))) as ?factURI).
+
+		# TODO: Esto es un apaño un poco feo
+		BIND (IRI(CONCAT("http://sid-unizar-search.com/importance/Fact/", str(MD5(CONCAT(str(?p), "-", str(?o)))))) as ?factURI).
+
+		BIND (IRI(CONCAT(str(?p), "-", str(?o), "-", str(?type))) as ?factTypeURI).
+	}
+}
+
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Fact-Type>. 
+#		?factURI <http://sid-unizar-search.com/importance/factFrequencyType> ?c . 
+#	}
+#}

@@ -1,0 +1,3 @@
+SELECT (COUNT(DISTINCT ?p) AS ?numberOfPredicates)  {
+ 	?s ?p ?o.
+}

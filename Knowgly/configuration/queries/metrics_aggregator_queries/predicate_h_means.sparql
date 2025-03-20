@@ -1,0 +1,16 @@
+SELECT ?pred ?type ?hmeans
+WHERE { 
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+        ?factURI a <http://sid-unizar-search.com/importance/Predicate-Type>.
+        ?factURI <http://sid-unizar-search.com/importance/predicate> ?pred .
+        ?factURI <http://sid-unizar-search.com/importance/type> ?type .
+
+        ?factURI <http://sid-unizar-search.com/importance/typeImportance> ?typeImportance .
+        ?factURI <http://sid-unizar-search.com/importance/entropyTypeImportance> ?entropyTypeImportance .
+		?factURI <http://sid-unizar-search.com/importance/entityTypeImportance> ?entityTypeImportance.
+	}
+
+
+
+	BIND((1.0 / ?typeImportance + 1.0 / ?entropyTypeImportance + 1.0 / ?entityTypeImportance) AS ?hmeans)
+}

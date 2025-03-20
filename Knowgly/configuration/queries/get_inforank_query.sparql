@@ -1,0 +1,5 @@
+SELECT ?inforank {
+    GRAPH <http://sid-unizar-search.com/infoRank> {
+        <%s> <http://purl.org/voc/vrank#inforank> ?inforank
+    }
+}

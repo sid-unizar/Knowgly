@@ -1,0 +1,43 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX math: <http://www.w3.org/2005/xpath-functions/math#>
+
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?propTypeElem a <http://sid-unizar-search.com/importance/Predicate-Type> .
+		?propTypeElem <http://sid-unizar-search.com/importance/typeImportance> ?typeImp .
+	}
+}
+WHERE {
+	
+	SELECT ?propTypeElem ?typeImp 
+	WHERE {
+		
+		## We get for each class and property, their EF_pt and the TF_p 
+		GRAPH <http://sid-unizar-search.com/importance/facts> {
+			?propTypeElem a <http://sid-unizar-search.com/importance/Predicate-Type> . 
+			?propTypeElem <http://sid-unizar-search.com/importance/entityFrequencyType> ?ef_pt. 
+			?propTypeElem <http://sid-unizar-search.com/importance/predicate> ?uri . 
+			?propTypeElem <http://sid-unizar-search.com/importance/type> ?class . 
+			?uri <http://sid-unizar-search.com/importance/typeFrequencyP> ?tf_p
+		}
+		
+		## This subquery calculates the number of types in the KB
+		{ 
+			SELECT (count (distinct ?type) as ?numTypes) 
+			WHERE {
+				?s a ?type. 
+			}
+		}
+		
+		BIND (IF(?tf_p = 0, xsd:double(0), xsd:double(?ef_pt) * math:log( xsd:double(?numTypes) / xsd:double(?tf_p) )) as ?typeImp) 
+	
+	}
+}
+
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Predicate-Type>. 
+#		?factURI <http://sid-unizar-search.com/importance/typeImportance> ?c . 
+#	}
+#}

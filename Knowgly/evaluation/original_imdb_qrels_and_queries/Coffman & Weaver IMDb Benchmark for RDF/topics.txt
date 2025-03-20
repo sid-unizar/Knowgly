@@ -1,0 +1,58 @@
+Topics
+
+1-10: America's favorite movie stars (http://www.harrisinteractive.com/harris_poll/pubs/Harris_Poll_2009_01_29.pdf)
+Relevant results contain a single URI from the person relation that is the tuple of the specified individual.
+
+11-20: America's favorite movies (http://www.harrisinteractive.com/harris_poll/index.asp?pid=874)
+Relevant results contain a single URI of the specified film. Exception is made for topics 12 and 14, which are well-known trilogies (i.e., all films of the trilogy are deemed relevant).
+
+21-30: film characters (http://connect.afi.com/site/DocServer/handv100.pdf?docID=246)
+Relevant results contain the URI of the film(s) in which the character appears. 
+
+31-35: film quotes (http://connect.afi.com/site/DocServer/quotes100.pdf?docID=242)
+Relevant results contain the URI of film in which the movie quote appears. 
+
+36: 
+Relevant results must denote the films in which the actor Mark Hamill plays the character Luke Skywalker. 
+
+37:
+Relevant results must denote all films in which the actor Tom Hanks appeared in the year 2004.
+
+38:
+Relevant results must denote the character that Henry Fonda plays in the film "Yours, Mine, and Ours.”.
+
+39:
+Relevant results must denote the character that Russell Crowe plays in the film "Gladiator." 
+
+40:
+Relevant results must denote the characters that the actor Brent Spiner plays in a Star Trek film. 
+
+41:
+Relevant results must denote all films in which the actress Audry Hepburn appeared in the year 1951.
+
+42:
+A relevant result must identify an actor who plays Jacques Clouseau in a movie.
+
+43:
+A relevant result must identify an actor who plays Jack Ryan in a movie.
+
+44:
+Relevant results must denote a film in which Sylvester Stallone plays the character Rocky. 
+
+45:
+A relevant result must identify an actor who plays "The Terminator." Multiple results may reference the same actor (and still be deemed relevant) if the actor appears in different movies as the specified character.
+
+46:
+Relevant results identify relationships (through the work relation) between Harrison Ford and George Lucas.
+
+47:
+Relevant results identify relationships (through the work relation) between Sean Connery and Ian Flemming.
+
+48:
+Relevant results identify relationships (through the work relation) between Keanu Reeves and (either of) the Wachowski sisters.
+
+49:
+Relevant results identify relationships (through the work relation) between Dean Jones and Herbie.
+
+50:
+Relevant results identify cast members in common between the films "Raiders of the Lost Ark" and "Indiana Jones and the Last Crusade."

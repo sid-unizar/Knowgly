@@ -1,0 +1,7 @@
+
+# darth vader movie
+
+<http://www.imdb.quira/character/5455260>,<http://www.imdb.quira/work/2202074> # Star Wars
+<http://www.imdb.quira/character/5455263>,<http://www.imdb.quira/work/2202129> # Star Wars: Episode V - The Empire Strikes Back
+<http://www.imdb.quira/character/5455264>,<http://www.imdb.quira/work/2202130> # Star Wars: Episode VI - Return of the Jedi
+<http://www.imdb.quira/character/5455262>,<http://www.imdb.quira/work/2202124> # Star Wars: Episode III - Revenge of the Sith

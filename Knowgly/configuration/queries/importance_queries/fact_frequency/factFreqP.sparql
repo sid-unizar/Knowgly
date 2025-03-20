@@ -1,0 +1,21 @@
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?uri a <http://sid-unizar-search.com/importance/Predicate>. 
+		?uri <http://sid-unizar-search.com/importance/factFrequencyP> ?count . 
+	}
+}
+WHERE {
+	SELECT ?uri (count(?uri) as ?count)
+    WHERE {
+    	?s ?uri ?o .
+		
+  	}
+    GROUP by ?uri 
+}
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Predicate>. 
+#		?factURI <http://sid-unizar-search.com/importance/factFrequencyP> ?c . 
+#	}
+#}

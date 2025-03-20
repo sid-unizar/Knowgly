@@ -1,0 +1,9 @@
+
+# rocky stallone
+
+<http://www.imdb.quira/work/2141563>,<http://www.imdb.quira/person/1428955> # Rocky
+<http://www.imdb.quira/work/2141571>,<http://www.imdb.quira/person/1428955> # Rocky Balboa
+<http://www.imdb.quira/work/2141582>,<http://www.imdb.quira/person/1428955> # Rocky II
+<http://www.imdb.quira/work/2141583>,<http://www.imdb.quira/person/1428955> # Rocky III
+<http://www.imdb.quira/work/2141585>,<http://www.imdb.quira/person/1428955> # Rocky IV
+<http://www.imdb.quira/work/2141624>,<http://www.imdb.quira/person/1428955> # Rocky V

@@ -1,0 +1,30 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX math: <http://www.w3.org/2005/xpath-functions/math#>
+
+INSERT {
+	GRAPH <http://sid-unizar-search.com/importance/facts> {
+		?predTypeURI a <http://sid-unizar-search.com/importance/Predicate-Type> .
+		?predTypeURI <http://sid-unizar-search.com/importance/entropyEntityTypeImportance> ?entType
+	}
+}
+WHERE {
+	
+	SELECT  ?predTypeURI ( (?imp * ?ent) as ?entType)
+	{
+		GRAPH <http://sid-unizar-search.com/importance/facts> {
+			?predTypeURI a <http://sid-unizar-search.com/importance/Predicate-Type>. 
+			?predTypeURI <http://sid-unizar-search.com/importance/entityTypeImportance> ?imp. 		
+			?predTypeURI <http://sid-unizar-search.com/importance/predicateEntropyType> ?ent. 
+		}
+		
+		
+	}
+	
+}
+
+# SELECT * {
+# 	GRAPH <http://sid-unizar-search.com/importance/facts> {
+#		?factURI a <http://sid-unizar-search.com/importance/Predicate-Type>. 
+#		?factURI <http://sid-unizar-search.com/importance/entropyEntityTypeImportance> ?c . 
+#	}
+#}

@@ -1,0 +1,4 @@
+
+# rick blaine movie
+
+<http://www.imdb.quira/character/1101827>,<http://www.imdb.quira/work/1670612> # Casablanca

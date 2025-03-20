@@ -1,0 +1,13 @@
+
+# harrison ford george lucas
+
+<http://www.imdb.quira/person/484306>,<http://www.imdb.quira/person/901062>,<http://www.imdb.quira/work/1592499> # American Graffiti
+<http://www.imdb.quira/person/484306>,<http://www.imdb.quira/person/901062>,<http://www.imdb.quira/work/2026218> # More American Graffiti
+<http://www.imdb.quira/person/484306>,<http://www.imdb.quira/person/901062>,<http://www.imdb.quira/work/1885153> # Indiana Jones and the Last Crusade
+<http://www.imdb.quira/person/484306>,<http://www.imdb.quira/person/901062>,<http://www.imdb.quira/work/1885161> # Indiana Jones and the Temple of Doom
+<http://www.imdb.quira/person/484306>,<http://www.imdb.quira/person/901062>,<http://www.imdb.quira/work/1845364> # Hearts of Darkness: A Filmmaker's Apocalypse
+<http://www.imdb.quira/person/484306>,<http://www.imdb.quira/person/901062>,<http://www.imdb.quira/work/1885152> # Indiana Jones and the Kingdom of the Crystal Skull
+<http://www.imdb.quira/person/484306>,<http://www.imdb.quira/person/901062>,<http://www.imdb.quira/work/2124494> # Raiders of the Lost Ark
+<http://www.imdb.quira/person/484306>,<http://www.imdb.quira/person/901062>,<http://www.imdb.quira/work/2202074> # Star Wars
+<http://www.imdb.quira/person/484306>,<http://www.imdb.quira/person/901062>,<http://www.imdb.quira/work/2202129> # Star Wars: Episode V - The Empire Strikes Back
+<http://www.imdb.quira/person/484306>,<http://www.imdb.quira/person/901062>,<http://www.imdb.quira/work/2202130> # Star Wars: Episode VI - Return of the Jedi
