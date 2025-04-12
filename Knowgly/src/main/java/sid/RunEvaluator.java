@@ -126,7 +126,7 @@ public class RunEvaluator {
 
             wString += "_" + String.format("%.4f", t.fields.get(3).weight) +
                     "_" + String.format("%.4f", t.fields.get(4).weight);
-        } else {
+        } else if (fields != 3) {
             throw new RuntimeException("Invalid number of fields. Allowed: 3 or 5");
         }
 
