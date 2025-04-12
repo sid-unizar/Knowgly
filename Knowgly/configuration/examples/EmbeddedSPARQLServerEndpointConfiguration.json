@@ -1,0 +1,7 @@
+{
+  "_comment": "Dataset rolation relative to the project's root, if the URL field is non-empty the rest of the fields will be ignored",
+  "SPARQLDatasetLocation": "datasets/dbpedia-entity-jena",
+  "SPARQLDatasetName": "dataset",
+  "SPARQLDatasetPort": 3030,
+  "RemoteEndpointURL": ""
+}

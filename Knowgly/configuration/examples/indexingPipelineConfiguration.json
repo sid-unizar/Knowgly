@@ -1,0 +1,24 @@
+{
+  "_comment" : "Metrics aggregation and indexing pipeline configuration. Each option has a comment with further instructions, indicating their relevant configuration files, if needed.",
+  
+
+  "_comment": "The source for the KG we are going to calculate the metrics for. Available values, as strings: HDT, LocalSPARQLEndpoint, EmbeddedSPARQLServerEndpoint, RemoteSPARQLEndpoint",
+  "_comment": "HDT: A local HDT file which will be queried and modified using the HDT API directly. This is the recommended and most efficient option, both in time and memory consumption. Configuration file: LocalHDTSPARQLEndpointConfiguration.json", 
+  "_comment": "EmbeddedSPARQLServerEndpoint: A local Jena TDB-2 dataset which will run as an embedded server. Configuration file: EmbeddedSPARQLServerEndpointConfiguration.json", 
+  "_comment": "RemoteSPARQLEndpoint: A remote SPARQL endpoint, which should have all data available under the default graph, and write access to it. WARNING: This will be extremely inefficient in time. Configuration file: EmbeddedSPARQLServerEndpointConfiguration.json",
+  "source" : "HDT",
+
+  "_comment": "The index system to be used, which will be internally instanced via its configuration file. Available values, as strings: elastic, terrier, galago, lucene",
+  "destination": "galago",
+
+  "_comment": "List of predicate URIs an entity must have in order to be indexed. If empty, all entities will be indexed",
+  "mustHavePredicates": ["http://www.w3.org/2000/01/rdf-schema#label", "http://www.w3.org/2000/01/rdf-schema#comment"],
+
+  "_comment": "Combination method to use when creating type-based virtual document templates. Available values, as strings: mostAppearances, union",
+  "_comment": "mostAppearances: Place predicates on the field where it has the most appearances, among all type-based templates for the entity. In conflicts, it will be placed in the field with the highest priority.",
+  "_comment": "union: Sequentially add predicates starting from the field with the highest priority, performing unions of fields of the same priority among all type-based templates for the entity. Fields with lesser priority will have removed all predicates which appear on the highest priority ones.",
+  "_comment": "maximumValues: Get the maximum score for every predicate among its associated types (based on its centroid scores), and do a new KMeans with these scores for the entity",
+  "_comment": "geometricMean: For every predicate, get the geometric mean of the scores for each associated type (based on its centroid scores), and do a new KMeans with these scores for the entity",
+  "_comment": "repetitions: Instead of combining the templates, do an union of all fields among all type-based templates at once, keeping duplicates inside the fields and across fields (a predicate could appear twice in cluster0 and once in cluster1, for example). This will be translated into multiple text mentions.",
+  "typeBasedCombinationMethod": "mostAppearances"
+}

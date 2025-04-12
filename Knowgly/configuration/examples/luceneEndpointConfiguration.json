@@ -1,0 +1,4 @@
+{
+  "_comment_2": "Attempt to create the index when creating a connector. It will throw a warning if it already exists",
+  "createIndex": true
+}

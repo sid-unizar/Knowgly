@@ -1,0 +1,576 @@
+{
+  "fields": [
+    {
+      "name": "bucket0",
+      "predicates": [
+        {
+          "predicateURI": "http://www.w3.org/2000/01/rdf-schema#label",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/actor",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/aka",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/actress",
+          "repetitions": 1
+        }
+      ],
+      "weight": 1.8,
+      "isForObjectProperties": false,
+      "isForEntityLinking": false
+    },
+    {
+      "name": "bucket1",
+      "predicates": [
+        {
+          "predicateURI": "http://www.imdb.quira/trivia",
+          "repetitions": 1
+        }
+      ],
+      "weight": 1.6,
+      "isForObjectProperties": false,
+      "isForEntityLinking": false
+    },
+    {
+      "name": "bucket2",
+      "predicates": [
+        {
+          "predicateURI": "http://www.imdb.quira/locations",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/tag",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/production_companies",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/article",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/production_designer",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/plot",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/quotes",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/cinematographer",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/director",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/birth_date",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/writer",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/costume_designer",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/birth_notes",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/birth_name",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/distributors",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/other_works",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/composer",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/editor",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/spouse",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/character",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/miscellaneous_crew",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/producer",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/mini_biography",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/death_notes",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/death_date",
+          "repetitions": 1
+        }
+      ],
+      "weight": 1.4,
+      "isForObjectProperties": false,
+      "isForEntityLinking": false
+    },
+    {
+      "name": "bucket3",
+      "predicates": [
+        {
+          "predicateURI": "http://www.imdb.quira/magazine_cover_photo",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/certificates",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/height",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/budget",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/references",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/copyright_holder",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/featured_in",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/followed_by",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/pictorial",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/order",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/language",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/gender",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/follows",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/interviews",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/runtimes",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/genre",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/nick_names",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/goofs",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/filming_dates",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/country",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/trade_mark",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/features",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/tech_info",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/referenced_in",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/serie",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/release_dates",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/episode_nr",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/printed_media_reviews",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/taglines",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/sound_mix",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/books",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/where_now",
+          "repetitions": 1
+        }
+      ],
+      "weight": 1.2,
+      "isForObjectProperties": false,
+      "isForEntityLinking": false
+    },
+    {
+      "name": "bucket4",
+      "predicates": [
+        {
+          "predicateURI": "http://www.imdb.quira/official_retail_price",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/gross",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/supplement",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/review",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/crazy_credits",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/release_country",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/production_process_protocol",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/weekend_gross",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/label",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/season_nr",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/edited_from",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/production_country",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/video_standard",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/spoofed_in",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/catalog_number",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/name",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/analog_left",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/rentals",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/aspect_ratio",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/alternate_language_version_of",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.w3.org/2000/01/rdf-schema#range",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/master_format",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/spin_off",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/status_of_availablility",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/other_literature",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/category",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/additional_information",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/edited_into",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/novel",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/opening_weekend",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/spoofs",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/quality_program",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/spin_off_from",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/remake_of",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/book",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/year",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/remade_as",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/disc_size",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/color_info",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/picture_format",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/number_of_chapter_stops",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/title",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/essays",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/salary_history",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/release_date",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/subtitles",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/color_information",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/number",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/certification",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/disc_format",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/number_of_sides",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/biographical_movies",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/laserdisc_title",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/close_captions-teletext-ld-g",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/alternate_versions",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/sound_encoding",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/length",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/digital_sound",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/mpaa",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/series_years",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/adaption",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/portrayed_in",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.w3.org/2000/01/rdf-schema#domain",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/version_of",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/admissions",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/pressing_plant",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/production_dates",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/analog_right",
+          "repetitions": 1
+        },
+        {
+          "predicateURI": "http://www.imdb.quira/screenplay-teleplay",
+          "repetitions": 1
+        }
+      ],
+      "weight": 1.0,
+      "isForObjectProperties": false,
+      "isForEntityLinking": false
+    }
+  ]
+}

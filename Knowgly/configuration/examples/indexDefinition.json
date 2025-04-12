@@ -1,0 +1,111 @@
+{
+    "settings": {
+        "number_of_shards": 1,
+        "max_ngram_diff": 2,
+
+        "analysis": {
+            "filter": {
+                "english_stop": {
+                    "type":       "stop",
+                    "stopwords":  "_english_"
+                },
+                "english_stemmer": {
+                    "type":       "stemmer",
+                    "language":   "english"
+                },
+                "english_possessive_stemmer": {
+                    "type":       "stemmer",
+                    "language":   "possessive_english"
+                },
+                "custom_shingle_filter": {
+                    "type": "shingle",
+                    "min_shingle_size": 2,
+                    "max_shingle_size": 2,
+                    "output_unigrams": false
+                }
+            },
+            "tokenizer": {
+                "ngram_tokenizer": {
+                    "type": "ngram",
+                    "min_gram": "2",
+                    "max_gram": "2",
+                    "token_chars": ["letter", "digit", "punctuation", "symbol"]
+                }
+            },
+            "analyzer": {
+                "n_gram_analyzer": {
+                    "type": "custom",
+                    "tokenizer": "standard",
+                    "filter": [
+                        "custom_shingle_filter",
+                        "lowercase"
+                    ]
+                },
+                "custom_english_analyzer": {
+                    "type": "custom",
+                    "tokenizer": "standard",
+                    "filter": [
+                        "english_stop",
+                        "lowercase",
+                        "english_stemmer",
+                        "english_possessive_stemmer"
+                    ]
+                }
+            },
+            "normalizer": {
+                "custom_keyword_normalizer": {
+                  "type": "custom",
+                  "char_filter": [],
+                  "filter": [
+                      "lowercase"
+                  ]
+                }
+            }
+        }
+    },
+    "mappings": {
+        "date_detection": false,
+        "dynamic":"strict",
+
+        "properties": {
+            "catchAll": {
+                "type": "text",
+                "analyzer": "custom_english_analyzer",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "normalizer": "custom_keyword_normalizer",
+                        "ignore_above": 256
+                    },
+                    "ngrams": {
+                        "type": "text",
+                        "analyzer": "n_gram_analyzer"
+                    }
+                }
+            },
+            "relations": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "types": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "fields": {
+                "properties": {
+                    %s
+                }
+            }
+        }
+    }
+}

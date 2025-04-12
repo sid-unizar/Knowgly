@@ -1,0 +1,8 @@
+{
+  "datasetLocation": "datasets/dbpedia-entity.hdt",
+
+  "_comment": "Where the updates run against the dataset specified above will be actually written to (Jena's HDT-backed Models are read-only)",
+  "_comment": "It can be converted to HDT or merged into the original hdt file after running all updates",
+  "_comment": "Note: The pipelines do not modify any HDT files. This is kept for future use, and is unsupported for now",
+  "updatesDatasetLocation": "datasets/dbpedia-entity_updates.nt"
+}

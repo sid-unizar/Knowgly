@@ -1,0 +1,25 @@
+{
+  "_comment" : "Metrics pipeline configuration. Each option has a comment with further instructions, indicating their relevant configuration files. RDF and HDT options can be combined, but NOT recommended, as the pipeline will need to perform conversions. A pure HDT pipeline is recommended.",
+  
+
+  "_comment" : "Add a virtual type to every entity (unique subject and object URIs) in the endpoint, in order to improve the  exhaustiveness of the metrics, which assume that all entities are typed",
+  "_comment" : "Note: This type will be automatically ignored on the metricsAggregators (including the type-based ones on the indexing pipeline), so no further actions will be needed",
+  "addVirtualTypes" : true,
+
+  "_comment": "The source for the KG we are going to calculate the metrics for. Available values, as strings: HDT, LocalSPARQLEndpoint, EmbeddedSPARQLServerEndpoint, RemoteSPARQLEndpoint",
+  "_comment": "HDT: A local HDT file which will be queried and modified using the HDT API directly. This is the recommended and most efficient option, both in time and memory consumption. Configuration file: LocalHDTSPARQLEndpointConfiguration.json", 
+  "_comment": "EmbeddedSPARQLServerEndpoint: A local Jena TDB-2 dataset which will run as an embedded server. Configuration file: EmbeddedSPARQLServerEndpointConfiguration.json", 
+  "_comment": "RemoteSPARQLEndpoint: A remote SPARQL endpoint, which should have all data available under the default graph, and write access to it. WARNING: This will be extremely inefficient in time. Configuration file: EmbeddedSPARQLServerEndpointConfiguration.json", 
+
+  "_comment:": "WARNING: Please note that, if the inforank metrics are going to be calculated, a local HDT endpoint must always be available and configured on LocalHDTSPARQLEndpointConfiguration.json regardless of this setting, as PageRank will need it.",
+  "source" : "HDT",
+
+  "_comment": "Metrics engines to run. WARNING: RDF engines cannot be used with an HDT source due to them needing to store data in subgraphs, and will result in an error.",
+  "calculateInfoRankMetrics" : true,
+  "_comment": "Available values, as strings: HDT (recommended due to time and memory efficiency), RDF",
+  "inforankMetricsAlgorithm" : "HDT",
+
+  "calculateImportanceMetrics" : true,
+  "_comment": "Available values, as strings: HDT (recommended due to time and memory efficiency), RDF",
+  "importanceMetricsAlgorithm" : "HDT"
+}

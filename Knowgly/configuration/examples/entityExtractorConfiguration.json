@@ -1,0 +1,17 @@
+{
+  "_comment": "Only either allowedPredicates or forbiddenPredicates should be set, but not both at the same time. Both can be empty too.",
+  
+  "extractTypes" : true,
+  "extractAttributes" : true,
+  "extractRelations" : true,
+  "extractAnonymousNodes" : true,
+  "flattenEntity" : false,
+  "_comment": "0 -> FromURI, 1-> FromLabel, 2-> None",
+  "uriRenamingStrategy" : 1,
+
+  "_comment" : "Type predicates are forcefully allowed",
+  "typePredicates" : ["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"],
+
+  "allowedPredicates" : [],
+  "forbiddenPredicates" : []
+}

@@ -1,0 +1,8 @@
+{
+  "_comment": "Name to be given to each field. Each one will have its number appended to as _idx (example: bucket4)",
+  "_comment": "Their weights are defined in metricsAggregatorConfiguration.json",
+  "fieldName": "bucket",
+
+  "_comment": "Subfield names, if any, to be used when querying and indexing. They should match those in indexFieldDefinition.json. Only used in elastic",
+  "subfields": ["ngrams","keyword"]
+}

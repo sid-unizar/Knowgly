@@ -1,0 +1,6 @@
+{
+  "_comment": "Add the predicate's name, following the URI renaming strategy specified in the extractor, before its associated objects (once)",
+  "addPredicateNames" : true,
+  "_comment": "If not empty, add only the predicate names for those whose URI matches any of the given prefixes (as per DBPedia-entity v2, those containing dbp:.*",
+  "predicateNamePrefixes": ["http://dbpedia.org/property/"]
+}

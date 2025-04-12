@@ -1,0 +1,7 @@
+{
+  "_comment": "http://domain:port",
+  "serverAddress": "http://localhost:35000",
+
+  "_comment": "Attempt to create the index when creating a connector. It will throw a warning if it already exists",
+  "createIndex": false
+}

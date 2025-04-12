@@ -1,0 +1,41 @@
+{
+  "_comment": "Number of predicate buckets to which entity predicates will be divided into, with kMeans",
+  "buckets": 5,
+
+  "_comment": "Weights to assign to each bucket, which will act as field weights in the VirtualDocumentTemplates, and thus as index field weights when indexing. After executing KMeans, each centroid will be assigned a field weight from this list, taking into account its order among all centroids. There should be as many as buckets, otherwise it's undefined behavior (their ordering doesn't matter).",
+  "bucketWeights": [1.0, 0.8, 0.6, 0.4, 0.2],
+
+  "_comment": "Maximum number of iterations for the internal kMeans algorithm (if negative, iterate until convergence. It should not take more than a few seconds)",
+  "kMeansIterations": 500,
+
+  "_comment": "Name to be given to each bucket, which will be translated to index field names. Each one will have its number appended to as _idx (example: bucketName_idx)",
+  "fieldName": "bucket",
+
+  "_comment": "Predicates which will NOT be included in the KMeans calculation, and instead will be added later to the highest priority cluster",
+  "_comment": "Note: Used in this case to imitate the fields of DBPedia-entity v2, while adding our own clusterization on top",
+  "predicatesOverride": [],
+
+  "_comment": "Type predicates to include in a separate 'typesField' field, with the given weight below. If empty, it will not be created",
+  "_comment": "Not used for now",
+  "typePredicatesOverride": [],
+  "typePredicatesOverrideFieldWeight": 1.0,
+
+  "_comment": "If not empty, calculate predicate-type metrics only for the types whose URI matches any of the given prefixes (in the case of DBpedia, those that fall in http://dbpedia.org/*)",
+  "typeNamePrefixes": ["http://dbpedia.org/"],
+
+  "_comment": "If true, clusterize datatype and object properties separately, returning a VirtualDocumentTemplate which duplicates the number of buckets specified above (one half for datatype properties, and the other half for object properties)",
+  "_comment_8": "Note: The number of buckets does not need to change, and the rest of the pipeline will be automatically be aware of it, since empty VirtualDocumentTemplates will also reflect the change",
+  "divideDataTypeAndObjectProperties": false,
+
+  "_comment": "Create additional relations fields for entity linking which will only contain URIs, by clustering object properties only with the same aggregator",
+  "_comment": "Not used for now",
+  "createRelationsFields": false,
+  "relationsFieldWeights": [6, 7, 8],
+
+  "_comment": "Weights to assign to each pair of fields, if divideDataTypeAndObjectProperties is set to true. bucketWeights will be ignored",
+  "dataTypePropertiesWeights": [1.0, 0.8, 0.6, 0.4, 0.2],
+  "objectPropertiesWeights": [1.0, 0.8, 0.6, 0.4, 0.2],
+
+  "_comment": "After clustering the predicates, remove the last cluster and reclusterize again (potentially filters spurious data and reorders the remaining predicates)",
+  "reclusterize": false
+}

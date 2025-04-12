@@ -1,0 +1,15 @@
+"%s": {
+    "type": "text",
+    "analyzer": "custom_english_analyzer",
+    "fields": {
+        "keyword": {
+            "type": "keyword",
+            "normalizer": "custom_keyword_normalizer",
+            "ignore_above": 256
+        },
+        "ngrams": {
+            "type": "text",
+            "analyzer": "n_gram_analyzer"
+        }
+    }
+}

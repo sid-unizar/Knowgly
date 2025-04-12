@@ -1,0 +1,24 @@
+{
+  "_comment" : "KG's HDT file for which the PageRank will be calculated. It should have the same contents as the original Jena-backed dataset (and ideally should be the same file as the one in LocalHDTSPARQLEndpoint)",
+  "inputFile" : "datasets/dbpedia-entity.hdt",
+  
+  "_comment" : "File to which the PageRank will be exported to, if saved as Ntriples",
+  "_comment" : "The pipeline will merge this file to the metrics destination automatically",
+  "outputFile" : "datasets/dbpedia-entity.nt",
+  
+  "_comment" : "File to which the PageRank will be exported to, if saved as HDT. During the process, it will create a temporary Ntriples file in the location above",
+  "_comment" : "The pipeline will merge this file to the metrics destination automatically",
+  "outputFileHDT" : "datasets/dbpedia-entity-pagerank.hdt",
+  
+  "_comment" : "PageRank parameters",
+  "dampingFactor" : 0.85,
+  "startValue" : 0.1,
+  "numberOfIterations" : 40,
+  "_comment_8" : "Calculating PageRank for literals may (will) cause crashes due to invalid URIs upon exporting the results, it is not recommended",
+  "considerLiterals" : false,
+  "parallelize" : true,
+  
+  "comment" : "File to which all metrics results will be saved to, if the HDT pipeline has been chosen. Consecutive metrics engines will write to this file, concatenating their results to the HDT file.",
+  "comment" : "Even if the RDF pipeline has been chosen, the WeightedPageRank generator will need to query W(r, p) metrics from this file. This will be created and handled automatically in both the RDF and HDT pipelines.",
+  "metricsToHDTFile" : "datasets/dbpedia-entity-metrics.hdt"
+}

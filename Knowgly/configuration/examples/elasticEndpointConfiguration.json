@@ -1,0 +1,13 @@
+{
+  "_comment": "The endpoint consists of only the DNS name (or localhost)",
+  
+  "user": "elastic",
+  "password": "...",
+  "endpoint": "localhost",
+  "endpointPort": 9200,
+  "certificateFingerprint": "...",
+  "elasticIndexName": "knowgly_index",
+
+  "_comment": "Attempt to create the index when creating a connector. It will throw a warning if it already exists",
+  "createIndex": true
+}

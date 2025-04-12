@@ -1,0 +1,8 @@
+{
+  "_comment": "Subfields which will not be queried, for whatever reason. Only supported in elastic",
+  "forbiddenSubfields" : [],
+
+
+  "_comment": "Maximum number of top results to return. Only supported in elastic",
+  "maxNumberOfResults" : 1000
+}
