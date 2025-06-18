@@ -11,8 +11,10 @@
 `Knowgly`
 ### Project Purpose and Goals
 Entity Indexing and Retrieval in Knowledge Graphs, via an information-based and fully unsupervised index schema construction
-### Paper Link: 
-Incoming :)
+### Paper:
+García, S., Bobed, C. (2025). Information-Aware Entity Indexing in Knowledge Graphs to Enable Semantic Search. In: Curry, E., et al. The Semantic Web. ESWC 2025. Lecture Notes in Computer Science, vol 15718. Springer, Cham. 
+
+https://doi.org/10.1007/978-3-031-94575-5_12
 
 # Table of Contents
 1. [Requirements](#requirements)
