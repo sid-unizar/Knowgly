@@ -1,5 +1,0 @@
-SELECT DISTINCT ?p {
-    ?s ?p ?o .
-
-    FILTER (isLiteral(?o))
-}

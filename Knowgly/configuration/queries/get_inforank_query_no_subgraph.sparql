@@ -1,3 +1,0 @@
-SELECT ?inforank {
-    <%s> <http://purl.org/voc/vrank#inforank> ?inforank
-}

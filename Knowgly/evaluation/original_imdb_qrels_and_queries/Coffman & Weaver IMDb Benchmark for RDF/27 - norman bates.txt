@@ -1,4 +1,0 @@
-
-# norman bates movie
-
-<http://www.imdb.quira/character/8580008>,<http://www.imdb.quira/work/2116386> # Psycho

@@ -1,4 +1,0 @@
-SELECT DISTINCT ?p {
- 	?s ?p ?o .
-}
- 
