@@ -51,7 +51,7 @@ process_run_files() {
 }
 
 # Starting directory
-start_dir="metrics_aggregator_results"
+start_dir="results"
 
 process_run_files "$start_dir"
  

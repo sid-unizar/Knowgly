@@ -124,6 +124,8 @@ pub fn get_entropy_type_importances()
         types_and_properties.len()
     );
 
+    println!("{:?}", types_and_properties.get("http://dbpedia.org/ontology/Boxer").unwrap());
+
     let pb_style = ProgressStyle::default_bar()
         .template("{wide_msg}: {spinner:.green} [{elapsed_precise}] [{bar:40.cyan/blue}] {pos}/{len} (ETA: {eta})")?
         .progress_chars("#>-");
@@ -142,6 +144,11 @@ pub fn get_entropy_type_importances()
                     type_iri,
                     properties,
                 );
+
+                if "http://dbpedia.org/ontology/Boxer" == type_iri {
+                    println!("Frequencies for boxer:");
+                    println!("{:?}", frequencies);
+                }
 
                 (type_iri.clone(), frequencies)
             })
@@ -171,6 +178,8 @@ pub fn get_entropy_type_importances()
         .map(|(type_iri, ff_p_t_counts)| {
             let n_preds_fact_frequencies_p_t = ff_p_t_counts.len();
             let n_preds_fact_frequencies_f_t = fact_frequencies_f_t.get(&type_iri).unwrap().len();
+            println!("Type: {:?}", type_iri);
+            println!("n_preds_fact_frequencies_p_t: {:?}, n_preds_fact_frequencies_f_t: {:?}", n_preds_fact_frequencies_p_t, n_preds_fact_frequencies_f_t);
 
             // Predicate IRI -> Object IRI or literal -> PF_f_t
             let pf_f_t_counts: HashMap<String, HashMap<String, f64>> = fact_frequencies_f_t
