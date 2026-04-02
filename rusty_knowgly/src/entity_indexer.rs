@@ -371,9 +371,12 @@ pub fn create_entity_representations_from_entity_iris_list(
 
     // I was expecting it to make Qlever explode, but turns out it works like a charm
     //let entity_details_workers: usize = thread::available_parallelism().unwrap().get() / 2;
-    let pool = rayon::ThreadPoolBuilder::new().num_threads(ENTITY_DETAILS_WORKERS).build().unwrap();
+    let thread_pool = rayon::ThreadPoolBuilder::new()
+        .num_threads(ENTITY_DETAILS_WORKERS)
+        .build()
+        .unwrap();
 
-    pool.install(|| {
+    thread_pool.install(|| {
         entity_iris.par_chunks(ENTITY_DETAILS_QUERY_CHUNK_SIZE).for_each_with(tx, |tx, chunk| {
             let batch_results = get_lexicalized_entities_p_o_entries_batch(
                 chunk,

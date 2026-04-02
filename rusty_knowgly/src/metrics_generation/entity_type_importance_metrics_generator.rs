@@ -10,6 +10,9 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::BufWriter;
 
+static ENTITY_TYPE_METRIC_WORKERS: usize = 8; // As many as there are threads in the default Qlever settings
+
+
 /// Given a fixed type $t$, calculates $EF_p(p,t)$ for every predicate $p$ associated with it (Formula (2))
 ///
 /// **Arguments**
@@ -101,16 +104,23 @@ pub fn get_entity_type_importances()
         .template("{wide_msg}: {spinner:.green} [{elapsed_precise}] [{bar:40.cyan/blue}] {pos}/{len} (ETA: {eta})")?
         .progress_chars("#>-"));
 
-    // Type IRI -> Predicate IRI -> Unique entities
-    let entity_frequencies_p_t: HashMap<String, HashMap<String, u64>> = type_iris
-        .par_iter()
-        .progress_with(pb.with_message("Calculating EF_p_t"))
-        .map(|type_iri| {
-            let frequencies = calculate_entity_frequency_p_t(type_iri);
+    let thread_pool = rayon::ThreadPoolBuilder::new()
+        .num_threads(ENTITY_TYPE_METRIC_WORKERS)
+        .build()
+        .unwrap();
 
-            (type_iri.clone(), frequencies)
-        })
-        .collect();
+    // Type IRI -> Predicate IRI -> Unique entities
+    let entity_frequencies_p_t: HashMap<String, HashMap<String, u64>> = thread_pool.install(|| {
+        type_iris
+            .par_iter()
+            .progress_with(pb.with_message("Calculating EF_p_t"))
+            .map(|type_iri| {
+                let frequencies = calculate_entity_frequency_p_t(type_iri);
+
+                (type_iri.clone(), frequencies)
+            })
+            .collect()
+    });
 
     log::info!("Calculating entity frequencies for all types");
     // Type IRI -> $|\mathcal{E}_t|$

@@ -11,6 +11,8 @@ use sophia::api::sparql::{SparqlDataset, SparqlResult};
 use sophia::api::term::Term;
 use std::collections::HashMap;
 
+static ENTROPY_TYPE_METRIC_WORKERS: usize = 8; // As many as there are threads in the default Qlever settings
+
 
 /// Given a fixed type $t$ and all properties found associated with it (via the entities in the KG),
 /// calculates $FF(f, t)$ (Formula (5))
@@ -124,8 +126,6 @@ pub fn get_entropy_type_importances()
         types_and_properties.len()
     );
 
-    println!("{:?}", types_and_properties.get("http://dbpedia.org/ontology/Boxer").unwrap());
-
     let pb_style = ProgressStyle::default_bar()
         .template("{wide_msg}: {spinner:.green} [{elapsed_precise}] [{bar:40.cyan/blue}] {pos}/{len} (ETA: {eta})")?
         .progress_chars("#>-");
@@ -133,8 +133,13 @@ pub fn get_entropy_type_importances()
     let mut pb = ProgressBar::new(types_and_properties.len() as u64);
     pb.set_style(pb_style.clone());
 
+    let thread_pool = rayon::ThreadPoolBuilder::new()
+        .num_threads(ENTROPY_TYPE_METRIC_WORKERS)
+        .build()
+        .unwrap();
+
     // Type IRI -> Predicate IRI -> Object IRI or literal > unique entities
-    let fact_frequencies_f_t: HashMap<String, HashMap<String, HashMap<String, u64>>> =
+    let fact_frequencies_f_t: HashMap<String, HashMap<String, HashMap<String, u64>>> = thread_pool.install(|| {
         types_and_properties
             .iter()
             .par_bridge()
@@ -145,42 +150,35 @@ pub fn get_entropy_type_importances()
                     properties,
                 );
 
-                if "http://dbpedia.org/ontology/Boxer" == type_iri {
-                    println!("Frequencies for boxer:");
-                    println!("{:?}", frequencies);
-                }
-
                 (type_iri.clone(), frequencies)
             })
-            .collect();
+            .collect()
+    });
 
     pb = ProgressBar::new(types_and_properties.len() as u64);
     pb.set_style(pb_style);
 
     // Type IRI -> Predicate IRI -> unique entities
-    let fact_frequencies_p_t: HashMap<String, HashMap<String, u64>> = types_and_properties
-        .keys()
-        .par_bridge()
-        .progress_with(pb.with_message("Calculating FF_p_t"))
-        .map(|type_iri| {
-            let frequencies = calculate_fact_frequencies_for_p_and_type(
-                type_iri,
-                &types_and_properties.get(type_iri).unwrap(),
-            );
+    let fact_frequencies_p_t: HashMap<String, HashMap<String, u64>> = thread_pool.install(|| {
+        types_and_properties
+            .keys()
+            .par_bridge()
+            .progress_with(pb.with_message("Calculating FF_p_t"))
+            .map(|type_iri| {
+                let frequencies = calculate_fact_frequencies_for_p_and_type(
+                    type_iri,
+                    &types_and_properties.get(type_iri).unwrap(),
+                );
 
-            (type_iri.clone(), frequencies)
-        })
-        .collect();
+                (type_iri.clone(), frequencies)
+            })
+            .collect()
+    });
 
     // Type IRI -> Predicate IRI -> Entropy Type Importance
     let entropy_type_importances: HashMap<String, HashMap<String, f64>> = fact_frequencies_p_t
         .into_iter()
         .map(|(type_iri, ff_p_t_counts)| {
-            let n_preds_fact_frequencies_p_t = ff_p_t_counts.len();
-            let n_preds_fact_frequencies_f_t = fact_frequencies_f_t.get(&type_iri).unwrap().len();
-            println!("Type: {:?}", type_iri);
-            println!("n_preds_fact_frequencies_p_t: {:?}, n_preds_fact_frequencies_f_t: {:?}", n_preds_fact_frequencies_p_t, n_preds_fact_frequencies_f_t);
-
             // Predicate IRI -> Object IRI or literal -> PF_f_t
             let pf_f_t_counts: HashMap<String, HashMap<String, f64>> = fact_frequencies_f_t
                 .get(&type_iri)
