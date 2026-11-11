@@ -1,9 +1,7 @@
 //! Metrics generator for the EntropyTypeImportance metric
 //!
 
-use crate::metrics_generation::common::{
-    dbpedia_namespace_filter, fetch_all_properties_for_each_type,
-};
+use crate::metrics_generation::common::fetch_all_properties_for_each_type;
 use crate::qlever_client::SPARQLEndpoint;
 use indicatif::{ParallelProgressIterator, ProgressBar, ProgressStyle};
 use rayon::prelude::*;
@@ -112,15 +110,18 @@ fn calculate_fact_frequencies_for_p_and_type(
 ///
 /// **Output**
 /// * A Hashmap of Type IRI -> Predicate IRI -> value
-pub fn get_entropy_type_importances()
--> Result<HashMap<String, HashMap<String, f64>>, Box<dyn std::error::Error>> {
+pub fn get_entropy_type_importances<F>(type_iri_filter_fn: Option<F>)
+-> Result<HashMap<String, HashMap<String, f64>>, Box<dyn std::error::Error>>
+where
+    F: Fn(&str) -> bool
+{
     // Similarly to the entity type importance metrics, we divide the calculation to avoid launching
     // a "mega-query" for every predicate and type instead
     //
     // In this case, since we need to scan objects instead of entities, we have optimized this more
     // aggressively by precalculating all property-type pairs that appear in the KG. This prevents us
     // from launching queries that are going to yield no results anyways.
-    let types_and_properties = fetch_all_properties_for_each_type(Some(dbpedia_namespace_filter))?;
+    let types_and_properties = fetch_all_properties_for_each_type(type_iri_filter_fn)?;
     log::info!(
         "Calculating entropy type importances for {} types",
         types_and_properties.len()

@@ -7,6 +7,8 @@ mod common;
 pub mod entity_type_importance_metrics_generator;
 pub mod entropy_type_importance_metrics_generator;
 
+pub use common::dbpedia_namespace_filter;
+
 /// Converts the results of any metrics into a JSON file
 ///
 /// **Arguments**

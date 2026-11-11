@@ -1,6 +1,6 @@
 //! Metrics generator for the EntityTypeImportance metric
 
-use crate::metrics_generation::common::{dbpedia_namespace_filter, fetch_all_type_iris};
+use crate::metrics_generation::common::fetch_all_type_iris;
 use crate::qlever_client::SPARQLEndpoint;
 use indicatif::{ParallelProgressIterator, ProgressBar, ProgressStyle};
 use rayon::prelude::*;
@@ -84,11 +84,14 @@ fn calculate_entity_frequencies_for_all_types() -> HashMap<String, u64> {
 ///
 /// **Output**
 /// * A Hashmap of Type IRI -> Predicate IRI -> value
-pub fn get_entity_type_importances()
--> Result<HashMap<String, HashMap<String, f64>>, Box<dyn std::error::Error>> {
+pub fn get_entity_type_importances<F>(type_iri_filter_fn: Option<F>)
+-> Result<HashMap<String, HashMap<String, f64>>, Box<dyn std::error::Error>>
+where 
+    F: Fn(&str) -> bool,
+{
     // We divide the calculation across all types explicitly. This avoids query optimization and join
     // problems if we were to launch this as a "mega-query" for every predicate and type instead
-    let type_iris = fetch_all_type_iris(Some(dbpedia_namespace_filter))?;
+    let type_iris = fetch_all_type_iris(type_iri_filter_fn)?;
     log::info!(
         "Calculating entity type importances for {} types",
         type_iris.len()

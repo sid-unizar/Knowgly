@@ -9,9 +9,9 @@ use crate::entity_indexer::{
 use crate::metrics_generation::clustering::{
     clusters_to_json, coalesce_metrics, get_clusters, json_to_clusters,
 };
+use crate::metrics_generation::{dbpedia_namespace_filter, json_to_metrics, metrics_to_json};
 use crate::metrics_generation::entity_type_importance_metrics_generator::get_entity_type_importances;
 use crate::metrics_generation::entropy_type_importance_metrics_generator::get_entropy_type_importances;
-use crate::metrics_generation::{json_to_metrics, metrics_to_json};
 use crate::qlever_client::SPARQLEndpoint;
 use clap::{Parser, ValueEnum};
 use env_logger::Builder;
@@ -53,6 +53,14 @@ enum MetricToCalculate {
     EntropyTypeImportance,
 }
 
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum, Debug)]
+enum DatasetFilter {
+    #[value(name = "DBPEDIA", alias = "dbpedia")]
+    DBPEDIA,
+    #[value(name = "WIKIDATA", alias = "wikidata")]
+    WIKIDATA,
+}
+
 #[derive(Debug, clap::Args)]
 pub struct CalculateMetrics {
     /// Which metric to calculate
@@ -62,6 +70,10 @@ pub struct CalculateMetrics {
     /// .json file path containing a dictionary of Type IRI -> Predicate IRI -> metric value
     #[arg(long)]
     output: String,
+
+    /// Dataset filters selector for DBpedia and Wikidata
+    #[arg(long, value_enum)]
+    use_dataset_filters: Option<DatasetFilter>,
 
     #[command(flatten)]
     pub sparqlendpoint_iri: SPARQLEndpointIRI,
@@ -130,9 +142,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Task::CalculateMetrics(args) => {
             SPARQLEndpoint::init(&args.sparqlendpoint_iri.endpoint);
 
+            let filter_fn: Option<fn(&str) -> bool> = match args.use_dataset_filters {
+                Some(DatasetFilter::DBPEDIA) => Some(dbpedia_namespace_filter),
+                Some(DatasetFilter::WIKIDATA) | None => None,
+            };
+
             let metrics = match args.metric_to_calculate {
-                MetricToCalculate::EntityTypeImportance => get_entity_type_importances()?,
-                MetricToCalculate::EntropyTypeImportance => get_entropy_type_importances()?,
+                MetricToCalculate::EntityTypeImportance => get_entity_type_importances(filter_fn)?,
+                MetricToCalculate::EntropyTypeImportance => get_entropy_type_importances(filter_fn)?,
             };
             metrics_to_json(&metrics, &args.output)?;
         }
