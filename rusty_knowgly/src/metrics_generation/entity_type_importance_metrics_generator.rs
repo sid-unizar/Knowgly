@@ -7,8 +7,6 @@ use rayon::prelude::*;
 use sophia::api::sparql::{SparqlDataset, SparqlResult};
 use sophia::api::term::Term;
 use std::collections::HashMap;
-use std::fs::File;
-use std::io::BufWriter;
 
 static ENTITY_TYPE_METRIC_WORKERS: usize = 8; // As many as there are threads in the default Qlever settings
 

@@ -1,6 +1,6 @@
-use reqwest::blocking::Client;
+use reqwest::Client;
 use sophia::sparql_client::SparqlClient;
-use std::sync::{Mutex, OnceLock};
+use std::sync::OnceLock;
 use std::thread;
 use std::time::Duration;
 
