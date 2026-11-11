@@ -128,7 +128,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     match cli.task {
         Task::CalculateMetrics(args) => {
-            SPARQLEndpoint::new(&args.sparqlendpoint_iri.endpoint);
+            SPARQLEndpoint::init(&args.sparqlendpoint_iri.endpoint);
 
             let metrics = match args.metric_to_calculate {
                 MetricToCalculate::EntityTypeImportance => get_entity_type_importances()?,
@@ -144,7 +144,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
 
         Task::IndexFromEntityIris(args) => {
-            SPARQLEndpoint::new(&args.sparqlendpoint_iri.endpoint);
+            SPARQLEndpoint::init(&args.sparqlendpoint_iri.endpoint);
 
             let clustered_predicates =
                 json_to_clusters(&args.common_index_params.clustered_metrics_file)?;

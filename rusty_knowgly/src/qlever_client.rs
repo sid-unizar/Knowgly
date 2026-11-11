@@ -4,12 +4,16 @@ use std::sync::OnceLock;
 use std::thread;
 use std::time::Duration;
 
+/// Wrapper around sophia's remote SPARQL client, initialized once
+/// and available thereafter for the entire program's lifetime
 pub struct SPARQLEndpoint;
 
 static SPARQL_CLIENT: OnceLock<SparqlClient> = OnceLock::new();
 
+
 impl SPARQLEndpoint {
-    pub fn new(endpoint: &str) {
+    /// Initialize with the provided HTTP endpoint
+    pub fn init(endpoint: &str) {
         let http_client = Client::builder()
             .timeout(Duration::from_secs(600))
             .pool_max_idle_per_host(thread::available_parallelism().unwrap().get())
@@ -23,6 +27,7 @@ impl SPARQLEndpoint {
         let _ = SPARQL_CLIENT.set(client);
     }
 
+    /// Access the static client
     pub fn access() -> &'static SparqlClient {
         SPARQL_CLIENT
             .get()

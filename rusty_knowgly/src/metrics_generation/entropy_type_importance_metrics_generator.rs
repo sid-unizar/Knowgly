@@ -25,7 +25,7 @@ static ENTROPY_TYPE_METRIC_WORKERS: usize = 8; // As many as there are threads i
 /// * A Hashmap of Predicate IRI -> Object IRI or literal -> value
 fn calculate_fact_frequencies_for_type(
     type_iri: &str,
-    property_iris: &Vec<String>,
+    property_iris: &[String],
 ) -> HashMap<String, HashMap<String, u64>> {
     let mut counts: HashMap<String, HashMap<String, u64>> = HashMap::new();
     for prop_iri in property_iris.iter() {
@@ -40,7 +40,7 @@ fn calculate_fact_frequencies_for_type(
         if let Ok(SparqlResult::Bindings(bindings)) = SPARQLEndpoint::access().query(&*query) {
             for row in bindings.flatten() {
                 let obj = row
-                    .get(0)
+                    .first()
                     .and_then(|t| t.as_ref())
                     .and_then(|t| {
                         t.iri()
@@ -78,7 +78,7 @@ fn calculate_fact_frequencies_for_type(
 /// * A Hashmap of Predicate IRI -> value
 fn calculate_fact_frequencies_for_p_and_type(
     type_iri: &str,
-    property_iris: &Vec<String>,
+    property_iris: &[String],
 ) -> HashMap<String, u64> {
     let mut counts: HashMap<String, u64> = HashMap::new();
     for prop_iri in property_iris.iter() {
@@ -93,7 +93,7 @@ fn calculate_fact_frequencies_for_p_and_type(
         if let Ok(SparqlResult::Bindings(bindings)) = SPARQLEndpoint::access().query(&*query) {
             for row in bindings.flatten() {
                 let ff_p_t = row
-                    .get(0)
+                    .first()
                     .and_then(|t| t.as_ref())
                     .and_then(|t| t.lexical_form())
                     .and_then(|s| s.parse::<u64>().ok());
@@ -167,7 +167,7 @@ pub fn get_entropy_type_importances()
             .map(|type_iri| {
                 let frequencies = calculate_fact_frequencies_for_p_and_type(
                     type_iri,
-                    &types_and_properties.get(type_iri).unwrap(),
+                    types_and_properties.get(type_iri).unwrap(),
                 );
 
                 (type_iri.clone(), frequencies)
@@ -203,8 +203,8 @@ pub fn get_entropy_type_importances()
                 .into_iter()
                 .map(|(pred_iri, pf_f_t_values_for_p)| {
                     let entropy: f64 = pf_f_t_values_for_p
-                        .into_iter()
-                        .map(|(_obj, value)| {
+                        .into_values()
+                        .map(|value| {
                             if value > 0.0 {
                                 value * value.log2()
                             } else {

@@ -48,7 +48,7 @@ where
     if let SparqlResult::Bindings(bindings) = SPARQLEndpoint::access().query(query)? {
         for row in bindings {
             let r = row?;
-            if let Some(type_iri) = r.get(0).and_then(|node| node.as_ref()?.iri()) {
+            if let Some(type_iri) = r.first().and_then(|node| node.as_ref()?.iri()) {
                 let iri_str = type_iri.to_string();
 
                 let keep = match &type_iri_filter_fn {
@@ -78,7 +78,7 @@ pub fn fetch_all_property_iris() -> Result<Vec<String>, Box<dyn std::error::Erro
         let iris = bindings
             .filter_map(|row| {
                 let r = row.ok()?;
-                let p_iri = r.get(0)?.as_ref()?;
+                let p_iri = r.first()?.as_ref()?;
                 Some(p_iri.iri()?.to_string())
             })
             .collect();
@@ -111,7 +111,7 @@ where
         bindings
             .filter_map(|row| {
                 let r = row.ok()?;
-                let p_iri = r.get(0)?.as_ref()?.iri()?.to_string();
+                let p_iri = r.first()?.as_ref()?.iri()?.to_string();
                 let type_iri = r.get(1)?.as_ref()?.iri()?.to_string();
 
                 match &type_iri_filter_fn {

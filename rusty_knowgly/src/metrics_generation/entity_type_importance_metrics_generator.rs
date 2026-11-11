@@ -19,19 +19,18 @@ static ENTITY_TYPE_METRIC_WORKERS: usize = 8; // As many as there are threads in
 /// **Output**
 /// * A Hashmap of Predicate IRI -> value
 fn calculate_entity_frequency_p_t(type_iri: &str) -> HashMap<String, u64> {
-    let query = format!(
-        r#"SELECT ?p (COUNT(DISTINCT ?s) AS ?ef_p_t) WHERE {{
-            ?s a <{}> .
-            ?s ?p ?o .
-        }} GROUP BY ?p"#,
-        type_iri
-    );
+    let query = r#"SELECT ?p (COUNT(DISTINCT ?s) AS ?ef_p_t) WHERE {"#.to_string()
+        + &format!(
+            r#"?s a <{}> ."#,
+            type_iri
+        )
+        + "?s ?p ?o .\n        } GROUP BY ?p";
 
     let mut counts = HashMap::new();
     if let Ok(SparqlResult::Bindings(bindings)) = SPARQLEndpoint::access().query(&*query) {
         for row in bindings.flatten() {
             let prop_iri = row
-                .get(0)
+                .first()
                 .and_then(|t| t.as_ref())
                 .and_then(|t| t.iri())
                 .map(|i| i.to_string());
@@ -54,17 +53,15 @@ fn calculate_entity_frequency_p_t(type_iri: &str) -> HashMap<String, u64> {
 /// **Output**
 /// * A Hashmap of Type IRI -> value
 fn calculate_entity_frequencies_for_all_types() -> HashMap<String, u64> {
-    let query = format!(
-        r#"SELECT ?type (COUNT(DISTINCT ?s) AS ?ef_t) WHERE {{
-            ?s a ?type.
-        }} GROUP BY ?type"#,
-    );
+    let query = r#"SELECT ?type (COUNT(DISTINCT ?s) AS ?ef_t) WHERE {"#
+        .to_string()
+        + "?s a ?type.\n        } GROUP BY ?type";
 
     let mut counts = HashMap::new();
     if let Ok(SparqlResult::Bindings(bindings)) = SPARQLEndpoint::access().query(&*query) {
         for row in bindings.flatten() {
             let type_iri = row
-                .get(0)
+                .first()
                 .and_then(|t| t.as_ref())
                 .and_then(|t| t.iri())
                 .map(|i| i.to_string());

@@ -20,7 +20,7 @@ pub fn metrics_to_json(
     let writer = BufWriter::new(file);
 
     serde_json::to_writer_pretty(writer, metrics)
-        .map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, e))?;
+        .map_err(std::io::Error::other)?;
 
     Ok(())
 }
@@ -37,7 +37,7 @@ pub fn json_to_metrics(path: &str) -> std::io::Result<HashMap<String, HashMap<St
     let reader = BufReader::new(file);
 
     let metrics: HashMap<String, HashMap<String, f64>> = serde_json::from_reader(reader)
-        .map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, e))?;
+        .map_err(std::io::Error::other)?;
 
     Ok(metrics)
 }

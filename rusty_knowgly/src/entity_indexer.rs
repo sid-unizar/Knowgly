@@ -46,7 +46,7 @@ pub fn get_all_entity_iris() -> Result<Vec<String>, Box<dyn std::error::Error>> 
         let iris = bindings
             .filter_map(|row| {
                 let r = row.ok()?;
-                let s_iri = r.get(0)?.as_ref()?;
+                let s_iri = r.first()?.as_ref()?;
                 Some(s_iri.iri()?.to_string())
             })
             .collect();
@@ -68,7 +68,7 @@ pub fn fetch_all_pred_labels() -> Result<HashMap<String, String>, Box<dyn std::e
         let p_label_pairs = bindings
             .filter_map(|row| {
                 let r = row.ok()?;
-                let pred_iri = r.get(0)?.as_ref()?;
+                let pred_iri = r.first()?.as_ref()?;
                 let pred_label = r.get(1)?.as_ref()?;
                 Some((
                     pred_iri.iri()?.to_string(),
@@ -94,7 +94,7 @@ pub fn fetch_all_obj_labels() -> Result<HashMap<String, String>, Box<dyn std::er
         let o_label_pairs = bindings
             .filter_map(|row| {
                 let r = row.ok()?;
-                let obj_iri = r.get(0)?.as_ref()?;
+                let obj_iri = r.first()?.as_ref()?;
                 let obj_label = r.get(1)?.as_ref()?;
                 Some((
                     obj_iri.iri()?.to_string(),
@@ -137,8 +137,8 @@ fn lexicalize_iri(iri: &IriRef<MownStr>) -> String {
     // Extract the IRI's path or fragment
     let iri_str = iri.as_str();
     let fragment = iri_str
-        .split(|c| c == '/' || c == '#')
-        .last()
+        .split(|c| ['/', '#'].contains(&c))
+        .next_back()
         .unwrap_or(iri_str);
 
     // Split camelCases
@@ -180,15 +180,15 @@ pub fn get_lexicalized_entity_p_o_entries(
 
     if let Ok(SparqlResult::Bindings(bindings)) = SPARQLEndpoint::access().query(&*query) {
         for row in bindings.flatten() {
-            let p = row.get(0).and_then(|t| t.as_ref());
+            let p = row.first().and_then(|t| t.as_ref());
             let o = row.get(1).and_then(|t| t.as_ref());
 
             let p_str = p.map(|term| {
                 if let Some(label) = pred_labels.get(&term.iri().unwrap().to_string()) {
-                    return label.to_string();
+                    label.to_string()
                 } else {
                     // Lexicalize the IRI's path or fragment as well as we can
-                    return term.iri().map(|i| lexicalize_iri(&i)).unwrap();
+                    term.iri().map(|i| lexicalize_iri(&i)).unwrap()
                 }
             });
 
@@ -196,10 +196,10 @@ pub fn get_lexicalized_entity_p_o_entries(
                 match term {
                     t if t.is_iri() => {
                         if let Some(label) = obj_labels.get(&t.iri().unwrap().to_string()) {
-                            return label.to_string();
+                            label.to_string()
                         } else {
                             // Lexicalize the IRI's path or fragment as well as we can
-                            return t.iri().map(|i| lexicalize_iri(&i)).unwrap();
+                            t.iri().map(|i| lexicalize_iri(&i)).unwrap()
                         }
                     }
                     t if t.is_literal() => t.lexical_form().map(|s| s.to_string()).unwrap(),
@@ -210,7 +210,7 @@ pub fn get_lexicalized_entity_p_o_entries(
             if let (Some(lexicalized_p), Some(lexicalized_o)) = (p_str, o_str) {
                 p_o_entries
                     .entry((p.unwrap().iri().unwrap().to_string(), lexicalized_p))
-                    .or_insert_with(Vec::new)
+                    .or_default()
                     .push(lexicalized_o);
             }
         }
@@ -255,7 +255,7 @@ pub fn get_lexicalized_entities_p_o_entries_batch(
 
     if let Ok(SparqlResult::Bindings(bindings)) = SPARQLEndpoint::access().query(&*query) {
         for row in bindings.flatten() {
-            let s = row.get(0).and_then(|t| t.as_ref());
+            let s = row.first().and_then(|t| t.as_ref());
             let p = row.get(1).and_then(|t| t.as_ref());
             let o = row.get(2).and_then(|t| t.as_ref());
 
@@ -263,10 +263,10 @@ pub fn get_lexicalized_entities_p_o_entries_batch(
 
             let p_str = p.map(|term| {
                 if let Some(label) = pred_labels.get(&term.iri().unwrap().to_string()) {
-                    return label.to_string();
+                    label.to_string()
                 } else {
                     // Lexicalize the IRI's path or fragment as well as we can
-                    return term.iri().map(|i| lexicalize_iri(&i)).unwrap();
+                    term.iri().map(|i| lexicalize_iri(&i)).unwrap()
                 }
             });
 
@@ -274,10 +274,10 @@ pub fn get_lexicalized_entities_p_o_entries_batch(
                 match term {
                     t if t.is_iri() => {
                         if let Some(label) = obj_labels.get(&t.iri().unwrap().to_string()) {
-                            return label.to_string();
+                            label.to_string()
                         } else {
                             // Lexicalize the IRI's path or fragment as well as we can
-                            return t.iri().map(|i| lexicalize_iri(&i)).unwrap();
+                            t.iri().map(|i| lexicalize_iri(&i)).unwrap()
                         }
                     }
                     t if t.is_literal() => t.lexical_form().map(|s| s.to_string()).unwrap(),
@@ -321,7 +321,7 @@ pub struct EntityRecord {
 /// * `entity_iris` - A Vec of entity IRIs to index
 /// * `clustered_predicates` - A Vec of clustered predicates obtained from `get_clusters`
 /// * `output_path` - Where to write the lexicalized entities. This will be written as a list of
-///                   EntityRecord objects in .jsonl format
+///   EntityRecord objects in .jsonl format
 ///
 /// **Outputs**
 /// * A HashMap of Entity IRI -> Vec of lexicalized entity fields
@@ -419,12 +419,12 @@ pub fn create_entity_representations_from_entity_iris_list(
 ///
 /// **Arguments**
 /// * `input_path` - A .jsonl formatted file with already lexicalized EntityRecord objects.
-///                  It does not matter if they have multiple fields (they will be reshuffled according
-///                  to `clustered_predicates`), but a single field is recommended to avoid constant
-///                  lookups
+///   It does not matter if they have multiple fields (they will be reshuffled according
+///   to `clustered_predicates`), but a single field is recommended to avoid constant
+///   lookups
 /// * `clustered_predicates` - A Vec of clustered predicates obtained from `get_clusters`
 /// * `output_path` - Where to write the lexicalized entities. This will be written as a list of
-///                   EntityRecord objects in .jsonl format
+///   EntityRecord objects in .jsonl format
 ///
 /// **Outputs**
 /// * A HashMap of Entity IRI -> Vec of lexicalized entity fields

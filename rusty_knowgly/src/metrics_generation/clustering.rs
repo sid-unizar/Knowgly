@@ -90,7 +90,7 @@ pub fn clusters_to_json(clusters: &[PredicatesCluster], path: &str) -> std::io::
     let writer = BufWriter::new(file);
 
     serde_json::to_writer_pretty(writer, clusters)
-        .map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, e))?;
+        .map_err(std::io::Error::other)?;
 
     Ok(())
 }
@@ -107,7 +107,7 @@ pub fn json_to_clusters(path: &str) -> std::io::Result<Vec<PredicatesCluster>> {
     let reader = BufReader::new(file);
 
     let clusters: Vec<PredicatesCluster> = serde_json::from_reader(reader)
-        .map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, e))?;
+        .map_err(std::io::Error::other)?;
 
     Ok(clusters)
 }
